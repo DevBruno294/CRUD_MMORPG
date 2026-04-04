@@ -46,20 +46,26 @@
                 if (!$resultado) {
                     die("query invalida". $connection->error);
                 }
+
+                //Lee los datos de cada fila
+                while ($fila = $resultado->fetch_assoc()) {
+                    echo "
+                    <tr>
+                        <td>{$fila['Id']}</td>
+                        <td>{$fila['Nombre']}</td>
+                        <td>{$fila['Clase']}</td>
+                        <td>{$fila['Nivel']}</td>
+                        <td>{$fila['Clan']}</td>
+                        <td>{$fila['Oro']}</td>
+                        <td>
+                            <a class='btn btn-primary btn-sm' href='/CRUD_MMORPG/edit.php?id={$fila['Id']}'>Editar</a>
+                            <a class='btn btn-danger btn-sm' href='/CRUD_MMORPG/delete.php?id={$fila['Id']}'>Eliminar</a>
+                        </td>
+                    </tr>
+                    ";
+                }
                 ?>
-                <tr>
-                    <td>10</td>
-                    <td>coso1</td>
-                    <td>coso2</td>
-                    <td>coso3</td>
-                    <td>coso4</td>
-                    <td>coso5</td>
-                    <td>coso6</td>
-                    <td>
-                        <a class="btn btn-primary btn-sm" href="/CRUD_MMORPG/edit.php">Editar</a>
-                        <a class="btn btn-danger btn-sm" href="/CRUD_MMORPG/delete.php">Eliminar</a>
-                    </td>
-                </tr>
+                
             </tbody>
         </table>
     </div>
