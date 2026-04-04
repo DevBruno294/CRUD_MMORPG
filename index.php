@@ -1,0 +1,3 @@
+<?php 
+// inicio del proyecto
+?>
