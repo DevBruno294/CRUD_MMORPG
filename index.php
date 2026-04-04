@@ -23,6 +23,35 @@
                     <th>Acciones</th>
                 </tr>
             </thead>
+            <tbody>
+                <?php 
+                $servername = "localhost:3307";
+                $username = "root";
+                $password = "";
+                $database = "grimorio";
+
+                //Creando la conexion a la base de datos
+                $connection = new mysqli($servername, $username, $password, $database);
+
+                //Chekeo de coneccion
+                if($connection->connect_error){
+                    die("Conexion Fallida" . $connection->connect_error);
+                }
+                ?>
+                <tr>
+                    <td>10</td>
+                    <td>coso1</td>
+                    <td>coso2</td>
+                    <td>coso3</td>
+                    <td>coso4</td>
+                    <td>coso5</td>
+                    <td>coso6</td>
+                    <td>
+                        <a class="btn btn-primary btn-sm" href="/CRUD_MMORPG/edit.php">Editar</a>
+                        <a class="btn btn-danger btn-sm" href="/CRUD_MMORPG/delete.php">Eliminar</a>
+                    </td>
+                </tr>
+            </tbody>
         </table>
     </div>
 </body>
