@@ -37,6 +37,15 @@
                 if($connection->connect_error){
                     die("Conexion Fallida" . $connection->connect_error);
                 }
+
+                //lee todas las filas de la tabla Personajes de la BD Grimorio
+                $sql = "SELECT * FROM personajes";
+                $resultado = $connection->query($sql);
+
+                //Chekeo de error en las lecturas de las filas de la tabla Personajes
+                if (!$resultado) {
+                    die("query invalida". $connection->error);
+                }
                 ?>
                 <tr>
                     <td>10</td>
