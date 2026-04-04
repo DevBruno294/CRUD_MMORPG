@@ -9,7 +9,21 @@
 <body>
     <div class="container my-5">
         <h2>Lista de Heroes</h2>
-        <a class="btn btn-primary" href="" role="button">Nuevo Heroe</a>
+        <a class="btn btn-primary" href="/CRUD_MMORPG/create.php" role="button">Nuevo Heroe</a>
+        <br>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>Clase</th>
+                    <th>Nivel</th>
+                    <th>Clan</th>
+                    <th>Oro</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+        </table>
     </div>
 </body>
 </html>
