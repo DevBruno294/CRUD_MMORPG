@@ -1,5 +1,15 @@
 <?php
-//creo las variables que van a almacenar los datos del formulario
+//Creando la conexion a la base de datos
+$servername = "localhost:3307";
+$username = "root";
+$password = "";
+$database = "grimorio";
+
+$connection = new mysqli($servername, $username, $password, $database);
+
+
+
+//1. creo las variables que van a almacenar los datos del formulario (siempre vacías al principio)
 $nombre = "";
 $clase = "";
 $nivel = "";
@@ -12,9 +22,8 @@ $mensajeDeError = "";
 //si los campos estan todos completos
 $mensajeDeConfirmacion =  "";
 
-//chekeo si la data esta siendo envidad a traves del metodo POST
 
-//solo se ejecuta si el usuario envió el formulario (POST), validamos
+//2.solo se ejecuta si el usuario envió el formulario (POST), validamos
 
 if ($_SERVER['REQUEST_METHOD'] =='POST') {
     $nombre = $_POST["nombre"];
@@ -23,12 +32,23 @@ if ($_SERVER['REQUEST_METHOD'] =='POST') {
     $clan = $_POST["clan"];
     $oro = $_POST["oro"];
     do {
+        // Chequeo si hay algún campo vacío
         if (empty($nombre) || empty($clase) || empty($nivel) || empty($clan) ||empty($oro) ) {
             $mensajeDeError = "todos los campos son requeridos";
-            break;
+            break; // Sale del do-while y no ejecuta lo de abajo
         }
     
-            //si no hay campos vacios, agregar los datos a la Base de datos
+            //3. lógica de INSERT a la base de datos
+            $sql = "INSERT INTO personajes (Nombre, Clase, Nivel, Clan, Oro)" .
+                    "VALUES('$nombre', '$clase', '$nivel', '$clan', '$oro' )";
+            $resultado = $connection ->query($sql);
+
+
+            if (!$resultado) {
+                $mensajeDeError = "query invalida" . $connection->error;
+                break;
+            }
+            //4. si no hay campos vacios, agregar los datos a la Base de datos, limpiamos variables y damos mensaje de éxito
             $nombre = "";
             $clase = "";
             $nivel = "";
@@ -36,7 +56,9 @@ if ($_SERVER['REQUEST_METHOD'] =='POST') {
             $oro = "";
     
             $mensajeDeConfirmacion = "Personaje agregado correctamente";
-    
+            
+            header("location: /CRUD_MMORPG/index.php");
+            exit;
     } while (false);
     
 }
