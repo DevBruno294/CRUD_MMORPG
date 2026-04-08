@@ -47,7 +47,7 @@
                     die("query invalida". $connection->error);
                 }
 
-                //Lee los datos de cada fila
+                //bucle while para mostrar personajes de MySQL en la tabla HTML
                 while ($fila = $resultado->fetch_assoc()) {
                     echo "
                     <tr>
