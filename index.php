@@ -12,6 +12,7 @@
         <a class="btn btn-primary" href="/CRUD_MMORPG/create.php" role="button">Nuevo Heroe</a>
         <br>
         <table class="table">
+            <!--cabeza de la tabla-->
             <thead>
                 <tr>
                     <th>ID</th>

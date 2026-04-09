@@ -23,7 +23,7 @@ $mensajeDeError = "";
 $mensajeDeConfirmacion =  "";
 
 
-//2.solo se ejecuta si el usuario envió el formulario (POST), validamos
+//2.solo se ejecuta cuando el usuario envió el formulario (POST), validamos
 
 if ($_SERVER['REQUEST_METHOD'] =='POST') {
     $nombre = $_POST["nombre"];
@@ -57,12 +57,11 @@ if ($_SERVER['REQUEST_METHOD'] =='POST') {
     
             $mensajeDeConfirmacion = "Personaje agregado correctamente";
             
-            header("location: /CRUD_MMORPG/index.php");
-            exit;
+           
     } while (false);
     
 }
-//chekeo si hay algun campo vacio
+
 
 ?>
 
@@ -76,11 +75,19 @@ if ($_SERVER['REQUEST_METHOD'] =='POST') {
     <title>Forja de Heroes</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+</svg>
 </head>
 <body>
     <div class="container my-5">
+        <a href="/CRUD_MMORPG/index.php" class="btn btn-primary">
+            <i class="bi bi-arrow-left">Volver atras</i> 
+        </a>
+    </div>
+        
+    <div class="container my-5">
         <h2>Nuevo Heroe</h2>
-
+       
         <?php 
             if (    !empty($mensajeDeError) ) {
               echo"
